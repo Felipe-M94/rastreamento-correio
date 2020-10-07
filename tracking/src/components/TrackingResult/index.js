@@ -1,21 +1,21 @@
 import React from "react"
 
-function TrackingResult({ data }) {
-  if (!data || !data.length) return null;
+function TrackingResult({ events }) {
+  console.log(events, 'AQUI')
+  
+  if (!events || events.length === 0) return null;
 
   return (
     <>
       <h1>Result</h1>
       <ul className="list-group">
-        {data.map(item => {
-          const { data, origem, destino, status } = item
-
+        {events.map(item => {
+          
           return (
-            <li key={status} className="list-group-item">
-              <span className="badge badge-primary">{origem}</span>
-              <span>data: {data}</span>
-              <span>destino: {destino}</span>
-              <span>status: {status}</span>
+            <li key={item.descricao} className="list-group-item">
+              <span>Data: {item.data}</span>
+              <span>Descrição: {item.descricao}</span>
+              <span>Local: {item.cidade}</span>
             </li>
           )
         })}
